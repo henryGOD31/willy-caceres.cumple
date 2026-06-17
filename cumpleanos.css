@@ -1,0 +1,257 @@
+/* =========================================================
+   ¡Feliz Cumpleaños, Padrino! · Asociación de Árbitros
+   Estilo negro / dorado · estadio de noche
+   ========================================================= */
+:root{
+  --oro:#f2b417;
+  --oro-claro:#ffd24a;
+  --oro-osc:#b9820c;
+  --rojo:#e0231a;
+  --rojo-osc:#b01910;
+  --negro:#0a0a0c;
+  --negro-2:#15140f;
+  --blanco:#fff7ea;
+  --grad-oro:linear-gradient(135deg,#ffe488,#f2b417 55%,#b9820c);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Poppins',system-ui,sans-serif;
+  background:var(--negro);color:var(--blanco);overflow-x:hidden;
+}
+.oro{color:var(--oro)}
+.blanco{color:var(--blanco)}
+.cursiva{font-style:italic}
+
+/* Confeti global */
+#confeti{position:fixed;inset:0;pointer-events:none;z-index:3}
+
+/* ===== NAV ===== */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;gap:18px;
+  padding:14px clamp(16px,4vw,46px);
+  background:linear-gradient(180deg,rgba(5,5,7,.92),rgba(5,5,7,.55) 80%,transparent);
+}
+.marca{display:flex;align-items:center;gap:11px}
+.marca-ic{width:44px;height:44px;border-radius:12px;background:var(--grad-oro);color:#3a2700;
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 6px 16px rgba(242,180,23,.4)}
+.marca-txt{display:flex;flex-direction:column;line-height:1.05}
+.marca-txt strong{font-size:.92rem;letter-spacing:1px}
+.marca-txt span{font-size:.72rem;color:var(--oro);letter-spacing:1.5px}
+.menu{display:flex;gap:6px;margin-left:auto}
+.nav-btn{
+  background:none;border:none;color:var(--blanco);font-family:inherit;font-weight:600;
+  font-size:.82rem;letter-spacing:.6px;padding:9px 13px;border-radius:22px;cursor:pointer;transition:.2s;position:relative;
+}
+.nav-btn:hover{color:var(--oro)}
+.nav-btn.activo{color:var(--oro)}
+.nav-btn.activo::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2px;background:var(--oro);border-radius:2px}
+.nav-btn.felic{border:1.5px solid var(--oro);color:var(--oro)}
+.nav-btn.felic:hover{background:var(--oro);color:#3a2700}
+.hamburguesa{display:none;background:none;border:none;color:var(--oro);font-size:1.6rem;cursor:pointer;margin-left:auto}
+
+/* ===== PANTALLAS ===== */
+#escenario{position:relative}
+.pantalla{
+  position:relative;min-height:100vh;width:100%;
+  display:none;padding:96px clamp(16px,4vw,50px) 50px;
+  overflow:hidden;
+}
+.pantalla.activa{display:block;animation:aparecer .6s cubic-bezier(.2,.7,.3,1)}
+@keyframes aparecer{from{opacity:0;transform:translateY(34px) scale(.99)}to{opacity:1;transform:none}}
+
+/* Fondo estadio */
+.fondo-estadio{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(242,180,23,.18), transparent 55%),
+    radial-gradient(90% 60% at 50% 120%, rgba(35,120,40,.35), transparent 60%),
+    linear-gradient(180deg,#06070a 0%, #0d0f16 45%, #0a1207 100%);
+}
+.fondo-estadio::after{ /* césped abajo */
+  content:"";position:absolute;left:0;right:0;bottom:0;height:120px;
+  background:linear-gradient(180deg,transparent,rgba(20,70,25,.55));
+  border-top:2px solid rgba(255,255,255,.07);
+}
+.fondo-estadio.oscuro{background:radial-gradient(80% 60% at 50% 30%,rgba(242,180,23,.12),transparent 60%),linear-gradient(180deg,#050507,#0a0a10 60%,#070b06)}
+
+/* ===== GLOBOS ===== */
+.globo{
+  position:absolute;width:88px;height:108px;border-radius:50% 50% 48% 48%;z-index:2;
+  background:radial-gradient(circle at 32% 28%, #ffe79a, var(--oro) 45%, var(--oro-osc) 100%);
+  box-shadow:inset -10px -12px 22px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
+  animation:flotar 6s ease-in-out infinite;
+}
+.globo::before{content:"";position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);
+  border-left:7px solid transparent;border-right:7px solid transparent;border-top:10px solid var(--oro-osc)}
+.globo::after{content:"";position:absolute;bottom:-78px;left:50%;width:1px;height:74px;background:rgba(255,255,255,.25)}
+.globo.negro{background:radial-gradient(circle at 32% 28%, #555, #1a1a1d 50%, #050505 100%)}
+.globo.negro::before{border-top-color:#050505}
+.globo.oro{background:radial-gradient(circle at 32% 28%, #fff0bf, var(--oro-claro) 45%, var(--oro-osc))}
+.g1{top:90px;left:3%;animation-delay:0s}
+.g2{top:140px;left:9%;width:70px;height:88px;animation-delay:1.2s}
+.g3{top:100px;right:5%;animation-delay:.6s}
+.g4{top:160px;right:11%;width:66px;height:84px;animation-delay:1.8s}
+@keyframes flotar{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-22px) rotate(3deg)}}
+
+/* ===== BANDERINES (banderas de árbitro asistente) ===== */
+.banderin{position:absolute;bottom:40px;width:118px;height:118px;z-index:2;transform-origin:bottom center;
+  animation:ondear 3.5s ease-in-out infinite}
+.banderin.izq{left:1%;transform:rotate(-12deg)}
+.banderin.der{right:1%;transform:rotate(12deg)}
+.banderin::before{ /* tela a cuadros rojo-amarillo */
+  content:"";position:absolute;top:0;left:18px;width:96px;height:80px;border-radius:4px;
+  background:
+    conic-gradient(var(--rojo) 90deg, var(--oro) 90deg 180deg, var(--rojo) 180deg 270deg, var(--oro) 270deg);
+  background-size:48px 40px;
+  box-shadow:0 6px 16px rgba(0,0,0,.5);
+}
+.banderin::after{ /* mástil */
+  content:"";position:absolute;left:10px;top:0;width:8px;height:118px;border-radius:6px;
+  background:linear-gradient(90deg,#2a2a2a,#111);
+}
+@keyframes ondear{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(-7deg)}}
+.banderin.der{animation-name:ondearDer}
+@keyframes ondearDer{0%,100%{transform:rotate(12deg)}50%{transform:rotate(7deg)}}
+
+/* ===== TARJETAS (amarilla y roja) ===== */
+.tarjetas-deco{position:absolute;left:4%;bottom:120px;z-index:2;display:flex;gap:6px;animation:flotar 5s ease-in-out infinite}
+.tarjeta{display:inline-block;width:54px;height:78px;border-radius:7px;box-shadow:0 8px 18px rgba(0,0,0,.5)}
+.tarjeta.amarilla{background:linear-gradient(135deg,#ffe14d,#e9b400);transform:rotate(-12deg)}
+.tarjeta.roja{background:linear-gradient(135deg,#ff4133,var(--rojo-osc));transform:rotate(9deg);margin-left:-10px}
+
+/* ===== SILBATO (dibujado en CSS) ===== */
+.silbato{position:absolute;width:130px;height:74px;z-index:2;color:transparent;
+  right:6%;bottom:140px;animation:flotar 5.5s ease-in-out infinite;filter:drop-shadow(0 8px 14px rgba(0,0,0,.5))}
+.silbato::before{content:"";position:absolute;left:0;top:14px;width:86px;height:56px;
+  border-radius:18px 16px 16px 26px;
+  background:radial-gradient(circle at 70% 32%, rgba(0,0,0,.55) 0 7px, transparent 8px), var(--grad-oro)}
+.silbato::after{content:"";position:absolute;left:74px;top:6px;width:56px;height:24px;border-radius:6px;
+  background:var(--grad-oro);transform:rotate(-7deg)}
+.silbato.plata::before{background:radial-gradient(circle at 70% 32%, rgba(0,0,0,.5) 0 7px, transparent 8px), linear-gradient(135deg,#f4f6f8,#aeb4bb 55%,#6c7177)}
+.silbato.plata::after{background:linear-gradient(135deg,#f4f6f8,#aeb4bb 55%,#6c7177)}
+
+/* ===== ANILLO DORADO + FOTO ===== */
+.anillo-oro{position:relative;width:min(46vw,440px);aspect-ratio:1;border-radius:50%;margin:0 auto;
+  display:flex;align-items:center;justify-content:center;z-index:5;
+  background:conic-gradient(from 0deg,var(--oro-claro),var(--oro),var(--oro-osc),var(--oro),var(--oro-claro));
+  padding:10px;box-shadow:0 0 60px rgba(242,180,23,.45),inset 0 0 30px rgba(0,0,0,.4);
+  animation:girarRing 18s linear infinite}
+@keyframes girarRing{to{transform:rotate(360deg)}}
+.anillo-oro.chico{width:min(34vw,230px)}
+.anillo-oro .foto{width:100%;height:100%;border-radius:50%;overflow:hidden;position:relative;
+  background:#0c0c10;animation:girarRing 18s linear infinite reverse}
+.foto[data-emoji]::after{content:attr(data-emoji);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;color:#666;z-index:0}
+.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+
+/* ===== PORTADA ===== */
+.portada-grid{position:relative;z-index:5;display:grid;grid-template-columns:1fr 1.1fr;gap:30px;align-items:center;max-width:1240px;margin:10px auto 0}
+.portada-texto{text-align:left}
+.titulo-cumple{display:flex;flex-direction:column;line-height:.82}
+.titulo-cumple .feliz{font-family:'Anton',sans-serif;font-size:clamp(2.6rem,7vw,5.4rem);color:var(--blanco);letter-spacing:2px;text-shadow:0 4px 18px rgba(0,0,0,.6)}
+.titulo-cumple .cumple{font-family:'Pacifico',cursive;font-size:clamp(2.8rem,8vw,6rem);color:var(--oro);
+  text-shadow:0 6px 22px rgba(242,180,23,.45);margin-top:-6px}
+.titulo-cumple.grande{align-items:center;text-align:center}
+.titulo-cumple.grande .feliz{font-size:clamp(2.4rem,7vw,5rem)}
+.titulo-cumple.grande .cumple{font-size:clamp(2.6rem,8vw,5.6rem)}
+.cinta{display:inline-block;background:linear-gradient(180deg,#1c1b16,#0d0d0a);border:1.5px solid var(--oro);
+  color:var(--blanco);font-weight:600;letter-spacing:1px;padding:10px 22px;border-radius:6px;margin:16px 0;
+  font-size:clamp(.8rem,1.6vw,1rem);box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.cinta b{color:var(--oro)}
+.parrafo{color:#e9e2d2;font-size:clamp(.95rem,1.7vw,1.12rem);line-height:1.7}
+.frase-mano{font-family:'Caveat',cursive;font-weight:700;color:var(--oro);font-size:clamp(1.4rem,3vw,2rem);margin-top:6px}
+.frase-mano.grande{font-size:clamp(1.3rem,2.6vw,1.8rem);color:#f3d27a}
+
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.chip{display:flex;gap:11px;align-items:flex-start;background:rgba(12,12,16,.6);border:1px solid rgba(242,180,23,.3);
+  border-radius:14px;padding:12px 14px;backdrop-filter:blur(4px)}
+.chip-ic{font-size:1.4rem;color:var(--oro)}
+.chip strong{display:block;font-size:.82rem;letter-spacing:.5px;color:var(--oro)}
+.chip small{color:#d7cfbf;font-size:.78rem;line-height:1.3}
+
+/* Flecha abajo */
+.flecha-abajo{display:block;margin:26px auto 0;width:50px;height:50px;border-radius:50%;
+  border:2px solid var(--oro);background:rgba(0,0,0,.3);color:var(--oro);font-size:1.6rem;line-height:1;
+  cursor:pointer;animation:rebote 1.8s infinite;transition:.2s;position:relative;z-index:6}
+.flecha-abajo:hover{background:var(--oro);color:#3a2700}
+.flecha-abajo.chica{width:42px;height:42px;font-size:1.3rem}
+@keyframes rebote{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
+
+/* ===== SECCIONES (contenido) ===== */
+.contenido-sec{position:relative;z-index:5;max-width:1240px;margin:0 auto;text-align:center}
+.titulo-sec{font-family:'Anton',sans-serif;font-size:clamp(1.8rem,4.5vw,3rem);letter-spacing:1.5px;margin-top:6px}
+.silbato-mini,.titulo-sec .oro{color:var(--oro)}
+.subtitulo-sec{color:#cfc7b7;margin:6px 0 26px}
+
+/* Carrusel */
+.carrusel{position:relative;display:flex;align-items:center;gap:8px;max-width:1180px;margin:0 auto}
+.car-pista{flex:1;min-width:0;display:flex;gap:18px;overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:6px 2px;scrollbar-width:none}
+.car-pista::-webkit-scrollbar{display:none}
+.momento{flex:0 0 270px;scroll-snap-align:start;background:linear-gradient(180deg,#14130e,#0c0b08);
+  border:1px solid rgba(242,180,23,.35);border-radius:16px;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.5);
+  transition:transform .3s, box-shadow .3s}
+.momento:hover{transform:translateY(-8px);box-shadow:0 22px 42px rgba(242,180,23,.25)}
+.momento-foto{height:160px;position:relative;overflow:hidden;background:#0c0c10}
+.momento-foto[data-emoji]::after{content:attr(data-emoji);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#555}
+.momento-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.momento-info{padding:14px;text-align:left}
+.m-ic{font-size:1.2rem}
+.momento-info h3{font-size:1rem;color:var(--oro);margin:4px 0 2px}
+.momento-info p{font-size:.84rem;color:#cfc7b7}
+.car-flecha{flex-shrink:0;width:46px;height:46px;border-radius:50%;border:2px solid var(--oro);
+  background:rgba(0,0,0,.35);color:var(--oro);font-size:1.6rem;cursor:pointer;transition:.2s}
+.car-flecha:hover{background:var(--oro);color:#3a2700}
+
+/* Agradecimientos */
+.agr-cabecera{display:grid;grid-template-columns:260px 1fr;gap:26px;align-items:center;text-align:left;margin-bottom:26px}
+.titulo-gracias{font-family:'Pacifico',cursive;font-size:clamp(2rem,5vw,3.4rem);line-height:1.05}
+.titulo-gracias .blanco{font-family:'Anton',sans-serif;font-size:.7em;letter-spacing:1px}
+.mini-titulo{font-family:'Anton',sans-serif;letter-spacing:1.5px;font-size:clamp(1.2rem,2.6vw,1.7rem);margin:8px 0 18px;
+  position:relative;display:inline-block;padding:0 70px}
+.mini-titulo::before,.mini-titulo::after{content:"";position:absolute;top:50%;width:54px;height:2px;background:linear-gradient(90deg,transparent,var(--oro))}
+.mini-titulo::before{left:0;transform:scaleX(-1)}.mini-titulo::after{right:0}
+.tarjetas-gracias{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.t-gracias{background:linear-gradient(180deg,#14130e,#0b0b08);border:1px solid rgba(242,180,23,.3);
+  border-radius:14px;padding:18px 14px;transition:transform .25s, border-color .25s}
+.t-gracias:hover{transform:translateY(-7px);border-color:var(--oro)}
+.t-ic{font-size:1.8rem;display:block;margin-bottom:8px}
+.t-gracias h4{font-size:.86rem;color:var(--oro);letter-spacing:.4px;margin-bottom:6px}
+.t-gracias p{font-size:.8rem;color:#cfc7b7;line-height:1.4}
+
+/* ===== FELICITACIÓN ===== */
+.felic-sec{display:none}
+.felic-sec.activa{display:block}
+#fuegos{position:absolute;inset:0;z-index:1;pointer-events:none}
+.felic-cont{padding-top:10px}
+.gracias-fila{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:26px auto;max-width:1000px}
+.g-item{background:rgba(10,10,14,.7);border:1px solid rgba(242,180,23,.3);border-radius:16px;padding:18px 16px;backdrop-filter:blur(4px)}
+.g-ic{width:54px;height:54px;border-radius:50%;border:2px solid var(--oro);display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin:0 auto 10px}
+.g-item strong{color:var(--oro);letter-spacing:1px;display:block;margin-bottom:6px}
+.g-item p{font-size:.82rem;color:#d7cfbf;line-height:1.4}
+.mensaje-final{font-family:'Caveat',cursive;font-weight:700;font-size:clamp(1.4rem,3.4vw,2.3rem);color:var(--blanco);max-width:900px;margin:8px auto 22px;line-height:1.3}
+.btn-final{font-family:'Poppins';font-weight:700;letter-spacing:.5px;border:none;cursor:pointer;
+  background:var(--grad-oro);color:#3a2700;padding:15px 34px;border-radius:40px;font-size:1.02rem;
+  box-shadow:0 12px 30px rgba(242,180,23,.5);transition:.2s}
+.btn-final:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 40px rgba(242,180,23,.65)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .portada-grid{grid-template-columns:1fr;text-align:center}
+  .portada-texto{text-align:center}
+  .titulo-cumple{align-items:center}
+  .chips{grid-template-columns:1fr}
+  .agr-cabecera{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .tarjetas-gracias{grid-template-columns:repeat(2,1fr)}
+  .gracias-fila{grid-template-columns:repeat(2,1fr)}
+  .momento{flex:0 0 calc(50% - 9px)}
+}
+@media(max-width:640px){
+  .menu{position:fixed;top:64px;right:10px;left:10px;flex-direction:column;background:rgba(8,8,10,.96);
+    border:1px solid rgba(242,180,23,.3);border-radius:14px;padding:10px;display:none}
+  .menu.abierto{display:flex}
+  .hamburguesa{display:block}
+  .marca-txt{display:none}
+  .momento{flex:0 0 86%}
+  .silbato,.tarjetas-deco{display:none}
+}

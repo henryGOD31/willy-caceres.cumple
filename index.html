@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Feliz Cumpleaños, Padrino! · Asociación de Árbitros</title>
+  <link rel="stylesheet" href="cumpleanos.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pacifico&family=Caveat:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Confeti global (lo dibuja el JS) -->
+  <canvas id="confeti"></canvas>
+
+  <!-- ===== BARRA DE NAVEGACIÓN ===== -->
+  <header class="nav">
+    <div class="marca">
+      <div class="marca-ic">🏆</div>
+      <div class="marca-txt"><strong>DE PARTE DE</strong><span>HENRY</span></div>
+    </div>
+    <nav class="menu" id="menu">
+      <button class="nav-btn activo" data-sec="inicio">INICIO</button>
+      <button class="nav-btn" data-sec="momentos">MOMENTOS</button>
+      <button class="nav-btn" data-sec="agradecimientos">AGRADECIMIENTOS</button>
+      <button class="nav-btn felic" data-sec="felicitacion">¡FELICITACIÓN!</button>
+    </nav>
+    <button class="hamburguesa" id="hamburguesa">☰</button>
+  </header>
+
+  <main id="escenario">
+
+    <!-- ====================================================== -->
+    <!-- SECCIÓN 1 · PORTADA                                     -->
+    <!-- ====================================================== -->
+    <section class="pantalla activa" id="sec-inicio">
+      <div class="fondo-estadio"></div>
+
+      <!-- Decoración -->
+      <div class="globo g1"></div>
+      <div class="globo g2 negro"></div>
+      <div class="globo g3 oro"></div>
+      <div class="globo g4 negro"></div>
+      <div class="banderin izq"></div>
+      <div class="banderin der"></div>
+      <div class="tarjetas-deco">
+        <span class="tarjeta amarilla"></span>
+        <span class="tarjeta roja"></span>
+      </div>
+      <div class="silbato deco-silbato">🎵</div>
+
+      <div class="portada-grid">
+        <!-- Foto del padrino en anillo dorado -->
+        <div class="anillo-oro">
+          <div class="foto" data-emoji="">
+            <img src="final.png" alt="Padrino" onerror="respaldo(this)">
+          </div>
+        </div>
+
+        <div class="portada-texto">
+          <h1 class="titulo-cumple"><span class="feliz">Feliz</span><span class="cumple">Cumpleaños</span></h1>
+          <div class="cinta">ESPERO HAYA TENIDO UN BUEN DIA <b>PROFE WILLY</b></div>
+          <p class="parrafo">Gracias por su apoyo incondicional,<br>por cada enseñanza y por ser un ejemplo<br>dentro y fuera de la cancha.</p>
+          <p class="frase-mano">¡Que haya tenido un gran día!</p>
+
+          <div class="chips">
+            <div class="chip"><span class="chip-ic"></span><div><strong>UN GRAN ARBITRO</strong><small>es un gran arbitro que con esfuerzo ha llegado lejos.</small></div></div>
+            <div class="chip"><span class="chip-ic"></span><div><strong>UN GRAN PROFESOR </strong><small>un profesor que me ha enseñado mucho sobre el arbitraje .</small></div></div>
+            <div class="chip"><span class="chip-ic"></span><div><strong>FUENTE DE ENSEÑANZA</strong><small>siempre enseñando a los nuevos y ayudando a mejorar .</small></div></div>
+            <div class="chip"><span class="chip-ic"></span><div><strong>FUENTE DE INSPIRACIÓN</strong><small>inspiracion de muchos que recien estamos empezando .</small></div></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="flecha-abajo" data-ir="momentos">⌄</button>
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- SECCIÓN 2 · MOMENTOS                                    -->
+    <!-- ====================================================== -->
+    <section class="pantalla" id="sec-momentos">
+      <div class="fondo-estadio"></div>
+      <div class="globo g1 oro"></div>
+      <div class="globo g4 negro"></div>
+      <div class="banderin der"></div>
+
+      <div class="contenido-sec">
+        <h2 class="titulo-sec"><span class="silbato-mini">🏵️</span> MOMENTOS <span class="oro">DESTACADOS</span></h2>
+        <p class="subtitulo-sec">COMO ALGUIEN NUEVO NO TENGO FOTOS CON USTED PROFE WILLY, AUNQUE EN UN FUTURO ESPERO COMPARTIR CANCHA CON USTED, ESTAS SON ALGUNAS FOTOS QUE HE PODIDO ENCONTRAR.</p>
+
+        <div class="carrusel">
+          <button class="car-flecha izq" id="carPrev">‹</button>
+          <div class="car-pista" id="carPista">
+            <div class="momento">
+              <div class="momento-foto" data-emoji=""><img src="MOMENTO 1.png" alt="Momento 1" onerror="respaldo(this)"></div>
+              <div class="momento-info"><span class="m-ic"></span><h3>LIDERAZGO</h3><p>Siempre al frente, guiando con el ejemplo.</p></div>
+            </div>
+            <div class="momento">
+              <div class="momento-foto" data-emoji=""><img src="MOMENTO 2.png" alt="Momento 2" onerror="respaldo(this)"></div>
+              <div class="momento-info"><span class="m-ic"></span><h3>DEDICACIÓN</h3><p>Comprometido en cada partido, cada decisión.</p></div>
+            </div>
+            <div class="momento">
+              <div class="momento-foto" data-emoji=""><img src="MOMENTO 3.png" alt="Momento 3" onerror="respaldo(this)"></div>
+              <div class="momento-info"><span class="m-ic"></span><h3>COMPAÑERISMO</h3><p>Un amigo, un apoyo y un gran compañero.</p></div>
+            </div>
+            <div class="momento">
+              <div class="momento-foto" data-emoji=""><img src="MOMENTO4.png" alt="Momento 4" onerror="respaldo(this)"></div>
+              <div class="momento-info"><span class="m-ic"></span><h3>PASIÓN</h3><p>El arbitraje no es solo una labor, es tu pasión.</p></div>
+            </div>
+            <div class="momento">
+              <div class="momento-foto" data-emoji=""><img src="MOMENTO5.jpg" alt="Momento 5" onerror="respaldo(this)"></div>
+              <div class="momento-info"><span class="m-ic"></span><h3>INSPIRACIÓN</h3><p>Motivas a otros a seguir este lindo camino.</p></div>
+            </div>
+          </div>
+          <button class="car-flecha der" id="carNext">›</button>
+        </div>
+
+        <button class="flecha-abajo chica" data-ir="agradecimientos">⌄</button>
+      </div>
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- SECCIÓN 3 · AGRADECIMIENTOS                             -->
+    <!-- ====================================================== -->
+    <section class="pantalla" id="sec-agradecimientos">
+      <div class="fondo-estadio"></div>
+      <div class="globo g2 oro"></div>
+      <div class="globo g3 negro"></div>
+      <div class="banderin der"></div>
+      <div class="silbato deco-silbato plata">🎵</div>
+
+      <div class="contenido-sec">
+        <div class="agr-cabecera">
+          <div class="anillo-oro chico">
+            <div class="foto" data-emoji="🧑‍⚖️"><img src="final.png" alt="Padrino" onerror="respaldo(this)"></div>
+          </div>
+          <div>
+            <h2 class="titulo-gracias"><span class="oro">Gracias</span> <span class="blanco">por todo, PROFE WILLY</span></h2>
+            <p class="parrafo">Hoy celebramos tu cumpleaños, pero también agradecemos cada
+              <b class="oro">enseñanza</b>, cada <b class="oro">consejo</b>, cada
+              <b class="oro">palabra de aliento</b> y cada <b class="oro">ejemplo</b> que
+              han formado no solo a un árbitro, sino a una mejor persona.</p>
+            <p class="frase-mano">¡Gracias por ser nuestro guía y nuestro ejemplo a seguir!</p>
+          </div>
+        </div>
+
+        <h3 class="mini-titulo">TU APOYO HA SIDO <span class="oro">CLAVE</span></h3>
+        <div class="tarjetas-gracias">
+          <div class="t-gracias"><span class="t-ic"></span><h4>POR TU APOYO</h4><p>Siempre has estado cuando más te necesitamos.</p></div>
+          <div class="t-gracias"><span class="t-ic"></span><h4>POR TU ENSEÑANZA</h4><p>Nos enseñaste que el arbitraje va más allá de las reglas.</p></div>
+          <div class="t-gracias"><span class="t-ic"></span><h4>POR TU EJEMPLO</h4><p>Tu profesionalismo, humildad y pasión nos inspiran.</p></div>
+          <div class="t-gracias"><span class="t-ic"></span><h4>POR TU AMISTAD</h4><p>Más que un mentor, eres un amigo con quien contar.</p></div>
+          <div class="t-gracias"><span class="t-ic"></span><h4>POR TU LEGADO</h4><p>Dejas una huella imborrable en cada árbitro que guías.</p></div>
+        </div>
+
+        <button class="flecha-abajo chica" data-ir="felicitacion">⌄</button>
+      </div>
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- SECCIÓN 4 · FELICITACIÓN FINAL (con fuegos)             -->
+    <!-- ====================================================== -->
+    <section class="pantalla felic-sec" id="sec-felicitacion">
+      <div class="fondo-estadio oscuro"></div>
+      <canvas id="fuegos"></canvas>
+
+      <div class="globo g1 oro"></div>
+      <div class="globo g2 negro"></div>
+      <div class="globo g3 oro"></div>
+      <div class="banderin izq"></div>
+      <div class="banderin der"></div>
+
+      <div class="contenido-sec felic-cont">
+        <p class="frase-mano grande">Para el mejor guía, el mejor ejemplo, el mejor padrino…</p>
+        <h2 class="titulo-cumple grande"><span class="feliz">¡Feliz</span><span class="cumple">Cumpleaños!</span></h2>
+        <div class="cinta">PROFESOR <b>WILLY</b></div>
+
+        <div class="gracias-fila">
+          <div class="g-item"><span class="g-ic">✨</span><strong>GRACIAS</strong><p>Por tu tiempo, tu dedicación y por cada enseñanza para toda la vida.</p></div>
+          <div class="g-item"><span class="g-ic">✨</span><strong>GRACIAS</strong><p>Por creer en nosotros y por impulsarnos a ser mejores cada día.</p></div>
+          <div class="g-item"><span class="g-ic">✨</span><strong>GRACIAS</strong><p>Por tu pasión y por representar nuestros valores dentro y fuera de la cancha.</p></div>
+          <div class="g-item"><span class="g-ic">✨</span><strong>GRACIAS</strong><p>Por ser más que un árbitro: un amigo, un mentor y un ejemplo a seguir.</p></div>
+        </div>
+
+        <p class="mensaje-final">¡Que este nuevo año de vida esté lleno de <b class="oro">salud</b>,
+          <span class="cursiva">felicidad</span> y muchos más <b class="oro">éxitos</b>!</p>
+
+        <button class="btn-final" id="btnFuegos">🔔 GRACIAS POR INSPIRARNOS ❤️</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="cumpleanos.js"></script>
+</body>
+</html>
